@@ -6,7 +6,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode((588,800))
+screen = pygame.display.set_mode((1530,800))
 pygame.display.set_caption("екн ерші")
 background_color = (255,255,255)
 
