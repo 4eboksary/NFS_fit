@@ -20,7 +20,7 @@ def get_car_image(filename, size, angle):
 
 my_car_image = get_car_image('Project/images/car1.png', (50, 50), 0)
 
-my_car = MyCar((800, 600), my_car_image, 0.1, 2)
+my_car = MyCar((400, 300), 270, my_car_image, 0.1, 2)
 running = True
 angle = 0
 pos = [400, 300]
@@ -49,10 +49,10 @@ while running:
         if my_car.speed <= my_car.max_speed:
             my_car.speed += my_car.acceleration
         my_car.move()
-        if keys[pygame.K_LEFT]:
-            my_car.rotate(5)
-        if keys[pygame.K_RIGHT]:
-            my_car.rotate(-5)
+    if keys[pygame.K_LEFT]:
+        my_car.rotate(5)
+    if keys[pygame.K_RIGHT]:
+        my_car.rotate(-5)
 
 
 
