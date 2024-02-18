@@ -1,12 +1,11 @@
 import pygame
 class ButtonImage:
-    def _init_(self, x, y, width, height, text, imagepath):
+    def __init__(self, x, y, width, height, image_path):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
-        self.text = text
-        self.image = pygame.image.load(imagepath) #завантажуємо фото
+        self.image = pygame.image.load(image_path) #завантажуємо фото
 
         self.image = pygame.transform.scale(self.image, (width, height)) #підганяємо під наш розмір
 
@@ -18,14 +17,10 @@ class ButtonImage:
     def draw(self, screen):
         screen.blit(self.image, self.rect.topleft)
 
-    #перевірка чи наведена мишка на кнопку
-    def check_hover(self, pos_mouse):
-        self.is_hovered = self.rect.collidepoint(pos_mouse)
-
     #обробка натискання кнопки
     def handle_click(self):
         if self.is_hovered:
-            print(f"Button '{self.text}' was clicked!")
+            print("")
            #Тут будуть виконатися додаткові дії, які повинні відбутися при натисканні кнопки.
             #Наприклад, відкриття нового вікна тощо.
 
