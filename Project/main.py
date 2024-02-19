@@ -12,7 +12,7 @@ background_color = (50, 50, 30)
 
 
 def get_car_image(filename, size, angle):
-    image = pygame.image.load(filename)
+    image = pygame.image.load(filename).convert_alpha()
     image = pygame.transform.scale(image, size)
     image = pygame.transform.rotate(image, angle)
     return image
@@ -30,21 +30,6 @@ while running:
             running = False
 
     keys = pygame.key.get_pressed()
-    # if keys[pygame.K_LEFT]:
-    #     if my_car.speed <= my_car.max_speed:
-    #         my_car.speed += my_car.acceleration
-    #     my_car.move(-my_car.speed, 0)
-    # if keys[pygame.K_RIGHT]:
-    #     my_car.move(my_car.speed, 0)
-    # if keys[pygame.K_UP]:
-    #     if my_car.speed <= my_car.max_speed:
-    #         my_car.speed += my_car.acceleration
-    #     my_car.move(0, -my_car.speed)
-    # if keys[pygame.K_DOWN]:
-    #     if my_car.speed <= my_car.max_speed:
-    #         my_car.speed += my_car.acceleration
-    #     my_car.move(0, my_car.speed)
-
     if keys[pygame.K_UP]:
         if my_car.speed <= my_car.max_speed:
             my_car.speed += my_car.acceleration
@@ -57,7 +42,6 @@ while running:
         if my_car.speed > 0:
             my_car.speed -= my_car.acceleration
             my_car.move()
-
 
     screen.fill(background_color)
     my_car.draw(screen)

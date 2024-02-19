@@ -26,7 +26,7 @@ class MyCar:
     def rotate(self, y):
         self.angle -= y
         self.new_image = pygame.transform.rotate(self.image, - self.angle - 90)
-        self.rect = self.image.get_rect(center=self.rect.center)
+        self.rect = self.new_image.get_rect(center=self.rect.center)
         if self.angle >= 360:
             self.angle -= 360
         if self.angle < 0:
@@ -36,3 +36,4 @@ class MyCar:
         screen.blit(self.new_image, self.rect)
         print(self.vector, self.rect.center, self.angle)
         pygame.draw.circle(screen, color="red", center=self.rect.center + self.vector, radius=5)
+        pygame.draw.circle(screen, color="blue", center=self.rect.center, radius=5)
