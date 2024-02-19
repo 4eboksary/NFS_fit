@@ -11,37 +11,44 @@ pygame.display.set_caption("екн ерші")
 background_color = (50, 50, 30)
 
 
-def get_car_image(filename, size, angle):
+def get_car_image(filename, size):
     image = pygame.image.load(filename).convert_alpha()
     image = pygame.transform.scale(image, size)
-    image = pygame.transform.rotate(image, angle)
     return image
 
 
-my_car_image = get_car_image('Project/images/car2.png', (50, 68), 0)
+def car_control(keys):
+    speed_decay = 1
+    if keys[pygame.K_UP] or keys[pygame.K_DOWN]:
+        if keys[pygame.K_UP]:
+            if my_car.speed < my_car.max_speed:
+                my_car.speed += my_car.acceleration
+        if keys[pygame.K_DOWN]:
+            if my_car.speed > - my_car.max_speed * 0.5:
+                my_car.speed -= my_car.acceleration * 2
+    else:
+        if my_car.speed > 0:
+            my_car.speed -= speed_decay
+        elif my_car.speed < 0:
+            my_car.speed += speed_decay
 
-my_car = MyCar((400, 300), 270, my_car_image, 0.05, 2)
+    if keys[pygame.K_LEFT]:
+        my_car.rotate(0.5)
+    elif keys[pygame.K_RIGHT]:
+        my_car.rotate(-0.5)
+    my_car.move()
+
+
+my_car_image = get_car_image('Project/images/car2.png', (50, 68))
+my_car = MyCar((400, 300), 270, my_car_image, 1, 130, 10)
 running = True
-angle = 0
-pos = [400, 300]
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_UP]:
-        if my_car.speed <= my_car.max_speed:
-            my_car.speed += my_car.acceleration
-        my_car.move()
-        if keys[pygame.K_LEFT]:
-            my_car.rotate(5)
-        if keys[pygame.K_RIGHT]:
-            my_car.rotate(-5)
-    else:
-        if my_car.speed > 0:
-            my_car.speed -= my_car.acceleration
-            my_car.move()
+    keys_pressed = pygame.key.get_pressed()
+    car_control(keys_pressed)
 
     screen.fill(background_color)
     my_car.draw(screen)
