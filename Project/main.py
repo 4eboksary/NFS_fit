@@ -6,8 +6,10 @@ from globals import Globals
 pygame.init()
 
 clock = pygame.time.Clock()
+
 global_vars = Globals()
 screen = pygame.display.set_mode((global_vars.screen_width, global_vars.screen_height))
+
 pygame.display.set_caption("екн ерші")
 background_color = global_vars.bg_color
 
