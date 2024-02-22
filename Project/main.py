@@ -1,14 +1,15 @@
 import pygame
 import pygame.freetype
 from my_car import MyCar
+from globals import Globals
 
 pygame.init()
 
 clock = pygame.time.Clock()
-
-screen = pygame.display.set_mode((800, 600))
+global_vars = Globals()
+screen = pygame.display.set_mode((global_vars.screen_width, global_vars.screen_height))
 pygame.display.set_caption("екн ерші")
-background_color = (50, 50, 30)
+background_color = global_vars.bg_color
 
 
 def get_car_image(filename, size):
