@@ -1,5 +1,5 @@
 import pygame
-class ButtonImage:
+class button_image:
     def __init__(self, x, y, width, height, image_path):
         self.x = x
         self.y = y
