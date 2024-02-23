@@ -3,7 +3,7 @@ import sys
 
 from globals import Globals
 from main import game
-from button import button_image
+from button import ButtonImage
 
 pygame.init()
 
@@ -17,9 +17,9 @@ background = pygame.image.load('images/car_background.jpg')
 
 def menu_main():
     #Створюємо кнопки
-    play_button = button_image(Globals.WIDTH/2-(300/2), 300, 300, 130, 'images/button_play.png')
-    set_button = button_image(Globals.WIDTH/2-(260/2), 420, 100, 100, 'images/button_settings.png')
-    exit_button = button_image(Globals.WIDTH/2+27, 420, 95, 95, 'images/button_exit.png')
+    play_button = ButtonImage(Globals.WIDTH/2-(300/2), 300, 300, 130, 'images/button_play.png')
+    set_button = ButtonImage(Globals.WIDTH/2-(260/2), 420, 100, 100, 'images/button_settings.png')
+    exit_button = ButtonImage(Globals.WIDTH/2+27, 420, 95, 95, 'images/button_exit.png')
 
     run = True
     while run:
@@ -58,8 +58,8 @@ def menu_main():
 
 def setting_menu():
     set_background = pygame.image.load('images/set_background.jpg')
-    resol_button = button_image(Globals.WIDTH/2-(300/2), 250, 300, 120, 'images/button_resolution.png')
-    back_button = button_image(Globals.WIDTH/2-(200/2), 400, 200, 100, 'images/button_back.png')
+    resol_button = ButtonImage(Globals.WIDTH/2-(300/2), 250, 300, 120, 'images/button_resolution.png')
+    back_button = ButtonImage(Globals.WIDTH/2-(200/2), 400, 200, 100, 'images/button_back.png')
 
     run = True
     while run:
