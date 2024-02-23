@@ -2,7 +2,7 @@ import pygame
 import sys
 
 from globals import Globals
-from Project.main import game
+from main import game
 from button import button_image
 
 pygame.init()
