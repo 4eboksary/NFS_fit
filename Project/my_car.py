@@ -42,3 +42,31 @@ class MyCar:
         lin = numpy.linspace(0, self.max_speed - 5, self.max_speed + 1)
         zero_y = 1 / ((self.max_speed * self.max_speed) / (-4))
         return zero_y * (- lin * lin + self.max_speed * lin)
+    
+
+    def get_car_image(filename, size):
+        image = pygame.image.load(filename).convert_alpha()
+        image = pygame.transform.scale(image, size)
+        return image
+
+
+    def car_control(self, keys):
+        speed_decay = 1
+        if keys[pygame.K_UP] or keys[pygame.K_DOWN] or keys[pygame.K_w] or keys[pygame.K_s]:
+            if keys[pygame.K_UP] or keys[pygame.K_w]:
+                if self.speed < self.max_speed:
+                    self.speed += self.acceleration
+            if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+                if self.speed > - self.max_speed * 0.5:
+                    self.speed -= self.acceleration * 2
+        else:
+            if self.speed > 0:
+                self.speed -= speed_decay
+            elif self.speed < 0:
+                self.speed += speed_decay
+
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            self.rotate(0.5)
+        elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+            self.rotate(-0.5)
+        self.move()

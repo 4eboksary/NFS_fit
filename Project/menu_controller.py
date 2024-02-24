@@ -2,20 +2,21 @@ import pygame
 import sys
 
 from globals import Globals
-from main import game
+from game_controller import GameController
 from button import ButtonImage
 
 pygame.init()
 
-clock = pygame.time.Clock()
-Globals.WIDTH = 1200
-Globals.HEIGHT = 800
+#clock = pygame.time.Clock()
+# Константи вже встановлені у файлі globals, ще раз встановлювати значення не треба
+# Globals.WIDTH = 1200 
+# Globals.HEIGHT = 800
 screen = pygame.display.set_mode((Globals.WIDTH, Globals.HEIGHT))
 pygame.display.set_caption("Car Racer")
 background = pygame.image.load('images/car_background.jpg')
 
-
-def menu_main():
+# menu_main пуеназвав на open_main_menu
+def open_main_menu():
     #Створюємо кнопки
     play_button = ButtonImage(Globals.WIDTH/2-(300/2), 300, 300, 130, 'images/button_play.png')
     set_button = ButtonImage(Globals.WIDTH/2-(260/2), 420, 100, 100, 'images/button_settings.png')
@@ -48,7 +49,7 @@ def menu_main():
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if play_button.is_clicked(event.pos):
-                    game(screen)
+                    GameController.game_start(screen)
 
         for btn in [play_button, set_button, exit_button]:
             btn.draw(screen)
@@ -84,6 +85,6 @@ def setting_menu():
 
         pygame.display.flip()  #Оновлення відображення на екран
 
-
-if __name__ == "__main__":
-    menu_main()
+# цей файл ми запескати не будемо, тільки мейнбудемо
+# if __name__ == "__main__":
+#     menu_main()
