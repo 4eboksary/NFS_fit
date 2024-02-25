@@ -16,4 +16,8 @@ class ButtonImage:
     def is_clicked(self, pos):
         return self.rect.collidepoint(pos)
 
+    def set_pos(self, x, y=None):
+        self.x = x
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))
+
 
