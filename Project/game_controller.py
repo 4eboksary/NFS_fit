@@ -13,7 +13,7 @@ class GameController:
         """
         clock = pygame.time.Clock()
         def game(screen):
-            my_car_image = MyCar.get_car_image(join('images','car2.png'), (50, 68))
+            my_car_image = MyCar.get_car_image(join('images','cars','car2.png'), (50, 68))
             my_car = MyCar((400, 300), 270, my_car_image, 1, 130, 10)
             running = True
             while running:
