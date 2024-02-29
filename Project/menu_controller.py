@@ -17,22 +17,15 @@ pygame.display.set_caption("Car Racer")
 
 # Створюємо кнопки
 play_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 130, join('images', 'buttons', 'button_play.png'))
-set_button = ButtonImage(Globals.WIDTH / 2 - 75, Globals.HEIGHT / 3 * 2, 100, 100,
-                         join('images', 'buttons', 'button_settings.png'))
-exit_button = ButtonImage(Globals.WIDTH / 2 + 75, Globals.HEIGHT / 3 * 2, 95, 95,
-                          join('images', 'buttons', 'button_exit.png'))
+set_button = ButtonImage(Globals.WIDTH / 2 - 75, Globals.HEIGHT / 3 * 2, 100, 100,join('images', 'buttons', 'button_settings.png'))
+exit_button = ButtonImage(Globals.WIDTH / 2 + 75, Globals.HEIGHT / 3 * 2, 95, 95,join('images', 'buttons', 'button_exit.png'))
 
-resol_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 120,
-                           join('images', 'buttons', 'button_resolution.png'))
-back_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 10 * 9, 200, 100,
-                          join('images', 'buttons', 'button_back.png'))
+resol_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 120,join('images', 'buttons', 'button_resolution.png'))
+back_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 10 * 9, 200, 100,join('images', 'buttons', 'button_back.png'))
 
-small_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 2, 325, 145,
-                               join('images', 'buttons', 'small_resol_button.png'))
-medium_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 3, 295, 105,
-                                join('images', 'buttons', 'medium_resol_button.png'))
-big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135,
-                             join('images', 'buttons', 'big_resol_button.png'))
+small_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 2, 325, 145,join('images', 'buttons', 'small_resol_button.png'))
+medium_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 3, 295, 105,join('images', 'buttons', 'medium_resol_button.png'))
+big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135,join('images', 'buttons', 'big_resol_button.png'))
 
 # Створюємо фон
 background = pygame.image.load(join('images', 'backgrounds', 'car_background.jpg'))
@@ -135,8 +128,8 @@ def video_set_menu():
                     if small_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 800, 600
                         button_pos_update()
-                        # background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
-                        # set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
+                        background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
+                        set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if medium_res_button.is_clicked(event.pos):
