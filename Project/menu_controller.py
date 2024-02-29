@@ -1,7 +1,6 @@
 import pygame
 import sys
 from os.path import join
-
 from my_car import get_car_image
 from globals import Globals
 from game_controller import GameController

@@ -1,6 +1,7 @@
 import pygame
 import pygame.freetype
 from my_car import MyCar
+from my_map import MyMap
 from globals import Globals
 from os.path import join
 
@@ -22,8 +23,12 @@ class GameController:
 
                 keys_pressed = pygame.key.get_pressed()
                 my_car.car_control(keys_pressed)
+                my_map_image = pygame.image.load(join('images', 'maps', 'road.png'))
+                image_map = pygame.transform.scale(my_map_image, (Globals.WIDTH, Globals.HEIGHT))
+                my_map = MyMap(image_map, Globals.WIDTH, Globals.HEIGHT, 0, 0)
 
                 screen.fill(Globals.BG_COLOR)
+                my_map.draw(screen)
                 my_car.draw(screen)
                 pygame.display.flip()
                 clock.tick(60)

@@ -1,5 +1,5 @@
 import pygame
-import time
+from os.path import join
 
 
 class MyMap:
@@ -9,16 +9,21 @@ class MyMap:
         self.height = height
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.image = pygame.image.load("images/road.png")
+        self.image = pygame.image.load(join('images','maps','road.png'))
         self.rect = self.image.get_rect()
         self.rect.topleft = (self.pos_x, self.pos_y)
         self.max_speed = 10
-        self.checkpoints = []
+        self.checkpoints = [
+            Checkpoint(self.surface, 100, 100),
+            Checkpoint(self.surface, 200, 200),
+            Checkpoint(self.surface, 300, 300),
+            Checkpoint(self.surface, 400, 400)]
 
     def draw(self, screen):
         screen.blit(self.surface, (self.pos_x, self.pos_y))
         for checkpoint in self.checkpoints:
-            checkpoint.draw()
+            if not checkpoint.is_crossed:  # Якщо чекпоінт не перетнутий
+                checkpoint.draw()
 
     '''def check_collision(self, car):
         if car.rect.colliderect(self.rect):
@@ -31,7 +36,7 @@ class MyMap:
     def add_checkpoint(self, checkpoint):
         self.checkpoints.append(checkpoint)
 
-    def check_win(self, car, time_limit):
+    def check_win(self):
         # Перевірити, чи перетнув гравець всі чекпоінти
         for checkpoint in self.checkpoints:
             if not checkpoint.is_crossed:
@@ -48,7 +53,7 @@ class Checkpoint:
         self.surface = surface
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.image = pygame.image.load("images/checkpoint.png")
+        self.image = pygame.image.load(join('images','maps','checkpoint.png'))
         self.rect = self.image.get_rect()
         self.rect.topleft = (self.pos_x, self.pos_y)
         self.is_crossed = False
@@ -57,5 +62,5 @@ class Checkpoint:
         self.surface.blit(self.image, self.rect)
 
     def check_collision(self, car):
-        if car.rect.colliderect(self.rect):
+        if car.rect.colliderect(self.rect) and not self.is_crossed:
             self.is_crossed = True
