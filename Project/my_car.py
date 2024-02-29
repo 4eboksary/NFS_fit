@@ -1,6 +1,7 @@
 import math
 import numpy
 import pygame
+from globals import Globals
 
 
 def get_car_image(image_name, size):
@@ -41,8 +42,10 @@ class MyCar:
     def draw(self, screen):
         screen.blit(self.rotated_image, self.rect)
         print(self.vector, self.rect.center, self.angle, self.speed)
-        # pygame.draw.circle(screen, color="red", center=self.rect.center + self.vector, radius=5)
-        # pygame.draw.circle(screen, color="blue", center=self.rect.center, radius=5)
+        #=======================================================================
+        if  Globals.args.show_vec == "True" :
+            pygame.draw.circle(screen, color="red", center=self.rect.center + self.vector, radius=5)
+            pygame.draw.circle(screen, color="blue", center=self.rect.center, radius=5)
 
     def speed_curve_creation(self):
         lin = numpy.linspace(0, self.max_speed - self.mobility, self.max_speed + self.acceleration)
