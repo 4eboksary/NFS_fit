@@ -38,6 +38,7 @@ big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135
 background = pygame.image.load(join('images', 'backgrounds', 'car_background.jpg'))
 set_background = pygame.image.load(join('images', 'backgrounds', 'set_background.jpg'))
 
+
 def open_main_menu():
     run = True
     while run:
@@ -134,8 +135,8 @@ def video_set_menu():
                     if small_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 800, 600
                         button_pos_update()
-                        #background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
-                        #set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
+                        # background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
+                        # set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if medium_res_button.is_clicked(event.pos):
@@ -168,8 +169,7 @@ def button_pos_update():
 
 
 def car_chooser():
-
-    #Завантажуємо задній фон
+    # Завантажуємо задній фон
     choose_car_background = pygame.image.load(join('images', 'backgrounds', 'choose_car_background.jpg'))
     choose_car_background = pygame.transform.scale(choose_car_background, (Globals.WIDTH, Globals.HEIGHT))
 
@@ -187,21 +187,25 @@ def car_chooser():
     index = 0
     car = Globals.CAR_CONTAINER[index]
 
+    menu_font = pygame.font.Font(None, 70)
+    text_surf = menu_font.render(car.name, True, (0, 255, 255))
+    text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 3))
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.MOUSEBUTTONUP:
-                if arrow_left.is_clicked(event.pos):
-                    index = (index - 1) % len(Globals.CAR_CONTAINER)
-                    car = Globals.CAR_CONTAINER[index]
-                if arrow_right.is_clicked(event.pos):
-                    index = (index + 1) % len(Globals.CAR_CONTAINER)
-                    car = Globals.CAR_CONTAINER[index]
                 if back_button.is_clicked(event.pos):
                     run = False
                 if second_play_button.is_clicked(event.pos):
                     GameController.game_start(screen, car)
+                if arrow_left.is_clicked(event.pos):
+                    index = (index - 1) % len(Globals.CAR_CONTAINER)
+                if arrow_right.is_clicked(event.pos):
+                    index = (index + 1) % len(Globals.CAR_CONTAINER)
+                car = Globals.CAR_CONTAINER[index]
+                text_surf = menu_font.render(car.name, True, (0, 255, 255))
+                text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 3))
 
         screen.blit(choose_car_background, (0, 0))
 
@@ -213,7 +217,7 @@ def car_chooser():
             btn.draw(screen)
 
         screen.blit(rotate_image, rect)
+        screen.blit(text_surf, text_rect)
 
         pygame.display.flip()
         clock.tick(60)
-
