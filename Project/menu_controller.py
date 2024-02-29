@@ -38,7 +38,6 @@ big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135
 background = pygame.image.load(join('images', 'backgrounds', 'car_background.jpg'))
 set_background = pygame.image.load(join('images', 'backgrounds', 'set_background.jpg'))
 
-
 def open_main_menu():
     run = True
     while run:
@@ -135,8 +134,8 @@ def video_set_menu():
                     if small_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 800, 600
                         button_pos_update()
-                        background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
-                        set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
+                        #background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
+                        #set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if medium_res_button.is_clicked(event.pos):
@@ -169,6 +168,11 @@ def button_pos_update():
 
 
 def car_chooser():
+
+    #Завантажуємо задній фон
+    choose_car_background = pygame.image.load(join('images', 'backgrounds', 'choose_car_background.jpg'))
+    choose_car_background = pygame.transform.scale(choose_car_background, (Globals.WIDTH, Globals.HEIGHT))
+
     path_arrow = join('images', 'buttons', 'arrow_left.png')
     arrow_left = ButtonImage(Globals.WIDTH * 0.25, Globals.HEIGHT * 0.5, 100, 100, path_arrow)
     arrow_right = ButtonImage(Globals.WIDTH * 0.75, Globals.HEIGHT * 0.5, 100, 100, path_arrow)
@@ -182,6 +186,7 @@ def car_chooser():
     run = True
     index = 0
     car = Globals.CAR_CONTAINER[index]
+
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -198,7 +203,8 @@ def car_chooser():
                 if second_play_button.is_clicked(event.pos):
                     GameController.game_start(screen, car)
 
-        screen.fill(Globals.BG_COLOR)
+        screen.blit(choose_car_background, (0, 0))
+
         rotate_image = pygame.transform.rotate(get_car_image(car.image, car.size), angle - 90)
         rect = rotate_image.get_rect(center=(Globals.WIDTH * 0.5, Globals.HEIGHT * 0.5))
         angle = (angle + 1) % 360
@@ -210,3 +216,4 @@ def car_chooser():
 
         pygame.display.flip()
         clock.tick(60)
+
