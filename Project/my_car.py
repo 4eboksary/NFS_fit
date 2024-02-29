@@ -10,8 +10,8 @@ def get_car_image(image_name, size):
 
 
 class MyCar:
-    def __init__(self, position, angle, car, size):
-        self.image = get_car_image(image_name=car.image, size=size)
+    def __init__(self, position, angle, car):
+        self.image = get_car_image(car.image, car.size)
         self.max_speed = car.max_speed
         self.speed = 0
         self.mobility = car.mobility

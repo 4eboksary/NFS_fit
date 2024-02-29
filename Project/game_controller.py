@@ -5,14 +5,14 @@ from globals import Globals
 
 
 class GameController:
-
-    def game_start(screen):
+    @staticmethod
+    def game_start(screen, car):
         """starts the game
         """
         clock = pygame.time.Clock()
 
         def game(screen):
-            my_car = MyCar((400, 300), 270, Globals.CAR_CONTAINER[2], (50, 102))
+            my_car = MyCar((400, 300), 270, car)
             running = True
             while running:
                 for event in pygame.event.get():
