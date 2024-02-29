@@ -1,4 +1,3 @@
-
 import pygame
 import time
 
@@ -21,13 +20,13 @@ class MyMap:
         for checkpoint in self.checkpoints:
             checkpoint.draw()
 
-    def check_collision(self, car):
+    '''def check_collision(self, car):
         if car.rect.colliderect(self.rect):
             # Зменшити максимальну швидкість машини
             car.max_speed = 5
         else:
             # Відновити максимальну швидкість машини
-            car.max_speed = 10
+            car.max_speed = 10'''
 
     def add_checkpoint(self, checkpoint):
         self.checkpoints.append(checkpoint)
@@ -38,9 +37,9 @@ class MyMap:
             if not checkpoint.is_crossed:
                 return False
 
-        # Перевірити, чи вклався гравець у часовий ліміт
+        '''# Перевірити, чи вклався гравець у часовий ліміт
         if time.time() - self.start_time > time_limit:
-            return False
+            return False'''
 
         return True
 
