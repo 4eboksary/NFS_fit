@@ -16,8 +16,8 @@ class MyMap:
         self.max_speed = 10
         self.checkpoints = []
 
-    def draw(self):
-        self.surface.blit(self.image, self.rect)
+    def draw(self, screen):
+        screen.blit(self.surface, (self.pos_x, self.pos_y))
         for checkpoint in self.checkpoints:
             checkpoint.draw()
 

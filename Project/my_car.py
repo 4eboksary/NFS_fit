@@ -42,12 +42,6 @@ class MyCar:
         lin = numpy.linspace(0, self.max_speed - 5, self.max_speed + 1)
         zero_y = 1 / ((self.max_speed * self.max_speed) / (-4))
         return zero_y * (- lin * lin + self.max_speed * lin)
-    
-
-    def get_car_image(filename, size):
-        image = pygame.image.load(filename).convert_alpha()
-        image = pygame.transform.scale(image, size)
-        return image
 
 
     def car_control(self, keys):
