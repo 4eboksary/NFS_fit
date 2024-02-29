@@ -15,7 +15,7 @@ class CarContainer:
 
         self.car_container = []
         for car in json_object:
-            model_path = join('images', car['image'])
+            model_path = join('images', 'cars', car['image'])
             self.car_container.append(CarModel(car['name'],
                                                model_path,
                                                car['acceleration'],

@@ -18,7 +18,7 @@ pygame.display.set_caption("Car Racer")
 # Створюємо кнопки
 play_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 130, join('images', 'buttons', 'button_play.png'))
 set_button = ButtonImage(Globals.WIDTH / 2 - 75, Globals.HEIGHT / 3 * 2, 100, 100,
-                         join('images', 'buttons', 'button_play.png'))
+                         join('images', 'buttons', 'button_settings.png'))
 exit_button = ButtonImage(Globals.WIDTH / 2 + 75, Globals.HEIGHT / 3 * 2, 95, 95,
                           join('images', 'buttons', 'button_exit.png'))
 
