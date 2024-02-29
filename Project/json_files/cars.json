@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Sith Car",
+    "acceleration": 1,
+    "max_speed": 130,
+    "image": "car2.png",
+    "mobility": 5,
+    "level_to_unlock": "None"
+  }
+]
+
