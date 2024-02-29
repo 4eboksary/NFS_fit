@@ -1,9 +1,5 @@
 import json
-
 from os.path import join
-
-import pygame
-
 from car_model import CarModel
 
 

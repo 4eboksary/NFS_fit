@@ -7,7 +7,6 @@ from game_controller import GameController
 from button import ButtonImage
 from os.path import join
 
-
 pygame.init()
 # clock = pygame.time.Clock()
 # Константи вже встановлені у файлі globals, ще раз встановлювати значення не треба
@@ -176,21 +175,26 @@ def car_chooser():
     run = True
     index = 0
     car = Globals.CAR_CONTAINER[index]
+
+    menu_font = pygame.font.Font(None, 70)
+    text_surf = menu_font.render(car.name, True, (0, 255, 255))
+    text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 6))
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.MOUSEBUTTONUP:
-                if arrow_left.is_clicked(event.pos):
-                    index = (index - 1) % len(Globals.CAR_CONTAINER)
-                    car = Globals.CAR_CONTAINER[index]
-                if arrow_right.is_clicked(event.pos):
-                    index = (index + 1) % len(Globals.CAR_CONTAINER)
-                    car = Globals.CAR_CONTAINER[index]
                 if back_button.is_clicked(event.pos):
                     run = False
                 if second_play_button.is_clicked(event.pos):
                     GameController.game_start(screen, car)
+                if arrow_left.is_clicked(event.pos):
+                    index = (index - 1) % len(Globals.CAR_CONTAINER)
+                if arrow_right.is_clicked(event.pos):
+                    index = (index + 1) % len(Globals.CAR_CONTAINER)
+                car = Globals.CAR_CONTAINER[index]
+                text_surf = menu_font.render(car.name, True, (0, 255, 255))
+                text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 6))
 
         screen.fill(Globals.BG_COLOR)
         rotate_image = pygame.transform.rotate(get_car_image(car.image, car.size), angle - 90)
@@ -201,6 +205,7 @@ def car_chooser():
             btn.draw(screen)
 
         screen.blit(rotate_image, rect)
+        screen.blit(text_surf, text_rect)
 
         pygame.display.flip()
         clock.tick(60)
