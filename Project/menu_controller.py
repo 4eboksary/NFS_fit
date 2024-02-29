@@ -1,6 +1,9 @@
+import os
+
 import pygame
 import sys
 
+from my_car import get_car_image
 from globals import Globals
 from game_controller import GameController
 from button import ButtonImage
@@ -49,7 +52,8 @@ def open_main_menu():
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if play_button.is_clicked(event.pos):
-                    GameController.game_start(screen)
+                    car_chooser()
+                    # GameController.game_start(screen)
 
         for btn in [play_button, set_button, exit_button]:
             btn.draw(screen)
@@ -128,4 +132,40 @@ def setting_menu():
 
         pygame.display.flip() #Оновлення відображення на екран
 
+
+def car_chooser():
+    path_arrow = os.path.join('images', 'arrow_left.png')
+    arrow_left = ButtonImage(Globals.WIDTH * 0.25, Globals.HEIGHT * 0.5, 100, 100, path_arrow)
+    arrow_right = ButtonImage(Globals.WIDTH * 0.75, Globals.HEIGHT * 0.5, 100, 100, path_arrow)
+    arrow_right.image = pygame.transform.flip(arrow_left.image, True, False)
+
+    angle = 0
+    clock = pygame.time.Clock()
+    run = True
+    index = 0
+    car = Globals.CAR_CONTAINER[index]
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if arrow_left.is_clicked(event.pos):
+                    index = (index - 1) % len(Globals.CAR_CONTAINER)
+                    car = Globals.CAR_CONTAINER[index]
+                if arrow_right.is_clicked(event.pos):
+                    index = (index + 1) % len(Globals.CAR_CONTAINER)
+                    car = Globals.CAR_CONTAINER[index]
+
+        screen.fill(Globals.BG_COLOR)
+        rotate_image = pygame.transform.rotate(get_car_image(car.image, (50, 60)), angle - 90)
+        rect = rotate_image.get_rect(center=(Globals.WIDTH*0.5, Globals.HEIGHT*0.5))
+        angle = (angle + 1) % 360
+
+        arrow_left.draw(screen)
+        arrow_right.draw(screen)
+
+        screen.blit(rotate_image, rect)
+
+        pygame.display.flip()
+        clock.tick(60)
 

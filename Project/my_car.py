@@ -3,15 +3,15 @@ import numpy
 import pygame
 
 
-def get_car_image(imageName, size):
-    image = pygame.image.load(imageName).convert_alpha()
+def get_car_image(image_name, size):
+    image = pygame.image.load(image_name).convert_alpha()
     image = pygame.transform.scale(image, size)
     return image
 
 
 class MyCar:
     def __init__(self, position, angle, car, size):
-        self.image = get_car_image(imageName=car.image, size=size)
+        self.image = get_car_image(image_name=car.image, size=size)
         self.max_speed = car.max_speed
         self.speed = 0
         self.mobility = car.mobility
@@ -45,7 +45,7 @@ class MyCar:
         # pygame.draw.circle(screen, color="blue", center=self.rect.center, radius=5)
 
     def speed_curve_creation(self):
-        lin = numpy.linspace(0, self.max_speed - 5, self.max_speed + 1)
+        lin = numpy.linspace(0, self.max_speed - self.mobility, self.max_speed + self.acceleration)
         zero_y = 1 / ((self.max_speed * self.max_speed) / (-4))
         return zero_y * (- lin * lin + self.max_speed * lin)
 
