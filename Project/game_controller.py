@@ -6,15 +6,14 @@ from os.path import join
 
 
 class GameController:
-
-
-    def game_start(screen):
+    @staticmethod
+    def game_start(screen, car):
         """starts the game
         """
         clock = pygame.time.Clock()
+
         def game(screen):
-            my_car_image = MyCar.get_car_image(join('images','cars','car2.png'), (50, 68))
-            my_car = MyCar((400, 300), 270, my_car_image, 1, 130, 10)
+            my_car = MyCar((400, 300), 270, car)
             running = True
             while running:
                 for event in pygame.event.get():
@@ -27,8 +26,6 @@ class GameController:
                 screen.fill(Globals.BG_COLOR)
                 my_car.draw(screen)
                 pygame.display.flip()
-                clock.tick(60) 
-        
-        game(screen)
+                clock.tick(60)
 
-    
+        game(screen)

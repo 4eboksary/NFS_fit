@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Sith Car",
+    "acceleration": 1,
+    "max_speed": 130,
+    "image": "car2.png",
+    "mobility": 5,
+    "size": [50, 84]
+  },
+  {
+    "name": "Illya Car",
+    "acceleration": 2,
+    "max_speed": 130,
+    "image": "car1.png",
+    "mobility": 10,
+    "size": [50, 84]
+  },
+  {
+    "name": "Busss",
+    "acceleration": 2,
+    "max_speed": 80,
+    "image": "car3.png",
+    "mobility": 5,
+    "size": [50, 84]
+  }
+]
+
