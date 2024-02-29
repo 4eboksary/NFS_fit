@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+from os.path import join
 from globals import Globals
 from game_controller import GameController
 from button import ButtonImage
@@ -15,20 +15,20 @@ screen = pygame.display.set_mode((Globals.WIDTH, Globals.HEIGHT))
 pygame.display.set_caption("Car Racer")
 
 #Створюємо кнопки
-play_button = ButtonImage(Globals.WIDTH / 2 - (300 / 2), 300, 300, 130, 'images/button_play.png')
-set_button = ButtonImage(Globals.WIDTH / 2 - (260 / 2), 420, 100, 100, 'images/button_settings.png')
-exit_button = ButtonImage(Globals.WIDTH / 2 + 27, 420, 95, 95, 'images/button_exit.png')
+play_button = ButtonImage(Globals.WIDTH / 2 - (300 / 2), 300, 300, 130, join('images', 'button_play.png'))
+set_button = ButtonImage(Globals.WIDTH / 2 - (260 / 2), 420, 100, 100, join('images','button_settings.png'))
+exit_button = ButtonImage(Globals.WIDTH / 2 + 27, 420, 95, 95, join('images','button_exit.png'))
 
-resol_button = ButtonImage(Globals.WIDTH / 2 - (300 / 2), 250, 300, 120, 'images/button_resolution.png')
-back_button = ButtonImage(Globals.WIDTH / 2 - (200 / 2), 475, 200, 100, 'images/button_back.png')
+resol_button = ButtonImage(Globals.WIDTH / 2 - (300 / 2), 250, 300, 120, join('images','button_resolution.png'))
+back_button = ButtonImage(Globals.WIDTH / 2 - (200 / 2), 475, 200, 100, join('images','button_back.png'))
 
-small_res_button = ButtonImage(Globals.WIDTH / 2 - (325 / 2), 125, 325, 145, 'images/small_resol_button.png')
-medium_res_button = ButtonImage(Globals.WIDTH / 2 - (295 / 2), 250, 295, 105, 'images/medium_resol_button.png')
-big_res_button = ButtonImage(Globals.WIDTH / 2 - (280 / 2), 340, 280, 135, 'images/big_resol_button.png')
+small_res_button = ButtonImage(Globals.WIDTH / 2 - (325 / 2), 125, 325, 145, join('images','small_resol_button.png'))
+medium_res_button = ButtonImage(Globals.WIDTH / 2 - (295 / 2), 250, 295, 105, join('images','medium_resol_button.png'))
+big_res_button = ButtonImage(Globals.WIDTH / 2 - (280 / 2), 340, 280, 135, join('images','big_resol_button.png'))
 
 #Створюємо фон
-background = pygame.image.load('images/car_background.jpg')
-set_background = pygame.image.load('images/set_background.jpg')
+background = pygame.image.load(join('images','car_background.jpg'))
+set_background = pygame.image.load(join('images','set_background.jpg'))
 
 def open_main_menu():
     run = True
@@ -127,22 +127,22 @@ def video_set_menu():
                     if small_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 800, 600
                         button_pos_update()
-                        background = pygame.image.load('images/car_background_small.jpg')
-                        set_background = pygame.image.load('images/set_background_small.jpg')
+                        background = pygame.image.load(join('images','car_background_small.jpg'))
+                        set_background = pygame.image.load(join('images','set_background_small.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if medium_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 1024, 768
                         button_pos_update()
-                        background = pygame.image.load('images/car_background_medium.jpg')
-                        set_background = pygame.image.load('images/set_background_medium.jpg')
+                        background = pygame.image.load(join('images','car_background_medium.jpg'))
+                        set_background = pygame.image.load(join('images','set_background_medium.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if big_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 1200, 800
                         button_pos_update()
-                        background = pygame.image.load('images/car_background.jpg')
-                        set_background = pygame.image.load('images/set_background.jpg')
+                        background = pygame.image.load(join('images','car_background.jpg'))
+                        set_background = pygame.image.load(join('images','set_background.jpg'))
 
         pygame.display.flip()  #Оновлення відображення на екран
 
