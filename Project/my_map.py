@@ -27,9 +27,8 @@ class MyMap:
 
     def draw(self, screen):
         screen.blit(self.surface, (self.pos_x, self.pos_y))
-        for checkpoint in self.checkpoints:
-            if not checkpoint.is_crossed:  # Якщо чекпоінт не перетнутий
-                checkpoint.draw()
+        for checkpoint in self.checkpoints: # Якщо чекпоінт не перетнутий
+            checkpoint.draw()
 
     '''def check_collision(self, car):
         if car.rect.colliderect(self.rect):
@@ -50,13 +49,12 @@ class MyMap:
         for checkpoint in self.checkpoints:
             if not checkpoint.is_crossed:
                 is_win = False
-
         return is_win
     
 
     def check_checkpoints(self, car) :
-         for checkpoint in self.checkpoints:
-               checkpoint.check_collision(car)
+        for checkpoint in self.checkpoints:
+            checkpoint.check_collision(car)
 
 class Checkpoint:
     def __init__(self, surface, pos_x, pos_y):
@@ -72,5 +70,5 @@ class Checkpoint:
         self.surface.blit(self.image, self.rect)
 
     def check_collision(self, car):
-        if car.rect.colliderect(self.rect) and not self.is_crossed:
+        if car.rect.colliderect(self.rect) and not self.is_crossed :
             self.is_crossed = True
