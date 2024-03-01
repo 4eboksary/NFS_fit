@@ -1,17 +1,12 @@
 import pygame
 import sys
 from os.path import join
-
 from my_car import get_car_image
 from globals import Globals
 from game_controller import GameController
 from button import ButtonImage
 
 pygame.init()
-# clock = pygame.time.Clock()
-# Константи вже встановлені у файлі globals, ще раз встановлювати значення не треба
-# Globals.WIDTH = 1200 
-# Globals.HEIGHT = 800
 screen = pygame.display.set_mode((Globals.WIDTH, Globals.HEIGHT))
 pygame.display.set_caption("Car Racer")
 
@@ -38,7 +33,7 @@ def open_main_menu():
         screen.fill((0, 0, 0))  # Заповнюємо чорним кольором
         screen.blit(background, (0, -80))
         menu_font = pygame.font.Font(None, 70)
-        text_surf = menu_font.render("CAR VS TIME RACER", True, (0, 255, 255))
+        text_surf = menu_font.render("RACER", True, (0, 255, 255))
         text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 3))
         screen.blit(text_surf, text_rect)
 
@@ -172,7 +167,7 @@ def car_chooser():
     arrow_right.image = pygame.transform.flip(arrow_left.image, True, False)
 
     second_play_button = ButtonImage(Globals.WIDTH * 0.5, Globals.HEIGHT * 0.7, 100, 100,
-                                     join('images', 'buttons', 'button_second_play.png'))
+                                      join('images', 'buttons', 'button_second_play.png'))
 
     angle = 0
     clock = pygame.time.Clock()
