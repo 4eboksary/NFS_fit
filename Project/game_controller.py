@@ -13,6 +13,12 @@ class GameController:
         """
         clock = pygame.time.Clock()
 
+        def show_win_message(screen) :
+            win_font = pygame.font.Font(None, 70)
+            text_surf = win_font.render("Win", True, (0, 255, 255))
+            text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 2))
+            screen.blit(text_surf, text_rect)
+
         def game(screen):
             my_car = MyCar((400, 300), 270, car)
             my_map_image = pygame.image.load(join('images', 'maps', 'road.png'))
@@ -29,10 +35,18 @@ class GameController:
                 screen.fill(Globals.BG_COLOR)
                 my_map.draw(screen)
                 my_car.draw(screen)
+
+                if my_map.check_win(my_car) :
+                    show_win_message(screen)
+
                 pygame.display.flip()
                 clock.tick(60)
                 
-                if my_map.check_win(my_car) :
-                    print("Win")
+                
+
+                    
 
         game(screen)
+
+
+    

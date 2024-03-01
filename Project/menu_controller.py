@@ -7,10 +7,6 @@ from game_controller import GameController
 from button import ButtonImage
 
 pygame.init()
-# clock = pygame.time.Clock()
-# Константи вже встановлені у файлі globals, ще раз встановлювати значення не треба
-# Globals.WIDTH = 1200 
-# Globals.HEIGHT = 800
 screen = pygame.display.set_mode((Globals.WIDTH, Globals.HEIGHT))
 pygame.display.set_caption("Car Racer")
 
@@ -126,8 +122,8 @@ def video_set_menu():
                     if small_res_button.is_clicked(event.pos):
                         Globals.WIDTH, Globals.HEIGHT = 800, 600
                         button_pos_update()
-                        #background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
-                        #set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
+                        background = pygame.image.load(join('images', 'backgrounds', 'car_background_small.jpg'))
+                        set_background = pygame.image.load(join('images', 'backgrounds', 'set_background_small.jpg'))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if medium_res_button.is_clicked(event.pos):
@@ -171,7 +167,7 @@ def car_chooser():
     arrow_right.image = pygame.transform.flip(arrow_left.image, True, False)
 
     second_play_button = ButtonImage(Globals.WIDTH * 0.5, Globals.HEIGHT * 0.7, 100, 100,
-                                     join('images', 'buttons', 'button_second_play.png'))
+                                      join('images', 'buttons', 'button_second_play.png'))
 
     angle = 0
     clock = pygame.time.Clock()

@@ -30,13 +30,6 @@ class MyMap:
         for checkpoint in self.checkpoints: # Якщо чекпоінт не перетнутий
             checkpoint.draw()
 
-    '''def check_collision(self, car):
-        if car.rect.colliderect(self.rect):
-            # Зменшити максимальну швидкість машини
-            car.max_speed = 5
-        else:
-            # Відновити максимальну швидкість машини
-            car.max_speed = 10'''
 
     def add_checkpoint(self, checkpoint):
         self.checkpoints.append(checkpoint)
