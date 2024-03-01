@@ -41,7 +41,7 @@ class MyCar:
 
     def draw(self, screen):
         screen.blit(self.rotated_image, self.rect)
-        print(self.vector, self.rect.center, self.angle, self.speed)
+        #print(self.vector, self.rect.center, self.angle, self.speed)
         #=======================================================================
         if  Globals.args.show_vec == "True" :
             pygame.draw.circle(screen, color="red", center=self.rect.center + self.vector, radius=5)

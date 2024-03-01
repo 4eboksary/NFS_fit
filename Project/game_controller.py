@@ -32,5 +32,8 @@ class GameController:
                 my_car.draw(screen)
                 pygame.display.flip()
                 clock.tick(60)
+                
+                if my_map.check_win(my_car) :
+                    print("Win")
 
         game(screen)
