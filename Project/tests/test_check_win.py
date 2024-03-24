@@ -12,7 +12,7 @@ def mock_check_checpoints(my_map, check_is_crossed):
     (mock_check_checpoints, True, True),
     (mock_check_checpoints, False, False)
 ])
-def test_check_win_true(mock_funk, check_is_crossed ,expected_result, monkeypatch):
+def test_check_win(mock_funk, check_is_crossed ,expected_result, monkeypatch):
      
      my_map_image = pygame.image.load(join('images', 'maps', 'road.png'))
      image_map = pygame.transform.scale(my_map_image, (0, 0)) 
