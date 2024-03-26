@@ -1,5 +1,6 @@
 import pygame
 from os.path import join
+from globals import Globals
 
 
 class MyMap:
@@ -14,10 +15,10 @@ class MyMap:
         self.rect.topleft = (self.pos_x, self.pos_y)
         self.max_speed = 10
         self.checkpoints = []
-        checkpoint1 = Checkpoint(self.surface, 100, 250)
-        checkpoint2 = Checkpoint(self.surface, 450, 30)
-        checkpoint3 = Checkpoint(self.surface, 850, 250)
-        checkpoint4 = Checkpoint(self.surface, 450, 500)
+        checkpoint1 = Checkpoint(self.surface, Globals.WIDTH/ 10, Globals.HEIGHT/3)
+        checkpoint2 = Checkpoint(self.surface, Globals.WIDTH/2.75, Globals.HEIGHT/21)
+        checkpoint3 = Checkpoint(self.surface, Globals.WIDTH / 2.75, Globals.HEIGHT / 1.5)
+        checkpoint4 = Checkpoint(self.surface, Globals.WIDTH / 1.5, Globals.HEIGHT / 3)
         self.add_checkpoint(checkpoint1)
         self.add_checkpoint(checkpoint2)
         self.add_checkpoint(checkpoint3)
