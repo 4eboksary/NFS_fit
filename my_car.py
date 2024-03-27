@@ -61,7 +61,6 @@ class MyCar:
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 if self.speed > - self.max_speed * 0.5:
                     self.speed -= self.acceleration * 2
-                    print(self.speed)
         else:
             if self.speed > 0:
                 self.speed -= speed_decay

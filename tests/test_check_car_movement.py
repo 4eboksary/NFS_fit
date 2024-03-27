@@ -1,23 +1,15 @@
 import pytest
 
-from globals import Globals
-from my_car import MyCar
 from tests import shared_mock_functions
 
 
-@pytest.mark.parametrize("position, speed, expected_movement",
-                         [((0, 0), 60, True),
-                          ((-70, 50), -60, False)])
-def test_check_car_movement(position, speed, expected_movement, monkeypatch):
-    def my_car_mock():
-        angle = 90
-        car = Globals.CAR_CONTAINER[0]
-        return MyCar(position, angle, car)
-
+@pytest.mark.parametrize("position, speed, direction, expected_movement",
+                         [((0, 0), 60, 1, True),
+                          ((-70, 50), 60, -1, False)])
+def test_check_car_movement(position, speed, direction, expected_movement, monkeypatch):
     monkeypatch.setattr("my_car.get_car_image", shared_mock_functions.mock_get_car_image)
-
-    test_subject = my_car_mock()
-    test_subject.speed = speed
+    test_subject = shared_mock_functions.my_car_mock(position, 5)
+    test_subject.speed = speed * direction
     car_position = position
     test_subject.move()
 
