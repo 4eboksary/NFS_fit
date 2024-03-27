@@ -1,7 +1,3 @@
-import pygame
-import my_car
-import globals
-
 
 class CarModel:
     def __init__(self, name, image, acceleration, max_speed, mobility, model_size):
