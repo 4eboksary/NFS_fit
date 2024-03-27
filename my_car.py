@@ -41,9 +41,9 @@ class MyCar:
 
     def draw(self, screen):
         screen.blit(self.rotated_image, self.rect)
-        if Globals.args.dev == "True" :
+        if Globals.args.dev == "True":
             print(self.vector, self.rect.center, self.angle, self.speed)
-        if  Globals.args.show_vec == "True" :
+        if Globals.args.show_vec == "True":
             pygame.draw.circle(screen, color="red", center=self.rect.center + self.vector, radius=5)
             pygame.draw.circle(screen, color="blue", center=self.rect.center, radius=5)
 
@@ -61,6 +61,7 @@ class MyCar:
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 if self.speed > - self.max_speed * 0.5:
                     self.speed -= self.acceleration * 2
+                    print(self.speed)
         else:
             if self.speed > 0:
                 self.speed -= speed_decay
