@@ -3,6 +3,7 @@ import pytest
 from tests import shared_mock_functions
 
 
+@pytest.mark.car
 @pytest.mark.parametrize("position, speed, direction, expected_movement",
                          [((0, 0), 60, 1, True),
                           ((-70, 50), 60, -1, False)])

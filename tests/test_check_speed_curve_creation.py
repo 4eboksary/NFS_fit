@@ -3,6 +3,7 @@ import pytest
 from tests import shared_mock_functions
 
 
+@pytest.mark.car
 @pytest.mark.parametrize("acceleration, max_speed, mobility, expected", [(1, 2, 1, [0, -0.75, -1])])
 def test_check_speed_curve_creation(acceleration, max_speed, mobility, expected, monkeypatch):
     monkeypatch.setattr("my_car.get_car_image", shared_mock_functions.mock_get_car_image)
