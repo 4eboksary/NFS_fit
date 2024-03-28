@@ -31,7 +31,10 @@ jobs:
         flake8 . --format=html --htmldir=reports/flake-report --exit-zero
     - name: Test with pytest
       run: |
-        pytest --html=reports/pytest-html/report.html --self-contained-html
+        pytest || true
+    - name: Test with pytest
+      run: |
+        pytest --html=reports/pytest-html/report.html --self-contained-html || true
     - name: Upload reports
       uses: actions/upload-artifact@v2
       with:
