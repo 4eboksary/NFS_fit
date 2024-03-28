@@ -1,11 +1,12 @@
 
 import pygame
 import pygame.freetype
-import menu_controller
+from menu_controller import MenuController
 
 
 def main():
-    menu_controller.open_main_menu()
+    menu_controller = MenuController()
+    menu_controller.main_flow()
 
 
 if __name__ == "__main__":

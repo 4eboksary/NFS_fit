@@ -1,11 +1,9 @@
-from unittest.mock import MagicMock
+from os.path import join
 
 import pygame
-import pytest
 
 from car_model import CarModel
 from my_car import MyCar
-from os.path import join
 
 
 def mock_get_car_image(image_name, size):
