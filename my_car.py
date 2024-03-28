@@ -1,7 +1,7 @@
 import math
+
 import numpy
 import pygame
-from globals import Globals
 
 
 def get_car_image(image_name, size):

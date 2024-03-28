@@ -1,6 +1,3 @@
-
-import pygame
-import pygame.freetype
 from menu_controller import MenuController
 
 

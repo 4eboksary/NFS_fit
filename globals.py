@@ -1,5 +1,4 @@
 from car_container import CarContainer
-import argparse
 
 
 class Globals:
