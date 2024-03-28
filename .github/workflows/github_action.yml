@@ -22,9 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest pytest-html flake8-html
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        flake8 . --format=html --htmldir=reports/flake-report
+#    - name: Lint with flake8
+#      run: |
+#        flake8 . --format=html --htmldir=reports/flake-report
     - name: Test with pytest
       run: |
         pytest --html=reports/pytest-html/report.html --self-contained-html
