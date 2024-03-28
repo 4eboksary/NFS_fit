@@ -30,5 +30,7 @@ jobs:
         pytest --html=reports/pytest-html/report.html --self-contained-html
     - name: Upload reports
       run: |
+        git config --global user.email "roshen@zebanda.com"
+        git config --global user.name "Petro"
         git add . && git commit -m "Add reports"
         git push
