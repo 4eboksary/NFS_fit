@@ -12,15 +12,22 @@ pygame.display.set_caption("Car Racer")
 
 # Створюємо кнопки
 play_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 130, join('images', 'buttons', 'button_play.png'))
-set_button = ButtonImage(Globals.WIDTH / 2 - 75, Globals.HEIGHT / 3 * 2, 100, 100,join('images', 'buttons', 'button_settings.png'))
-exit_button = ButtonImage(Globals.WIDTH / 2 + 75, Globals.HEIGHT / 3 * 2, 95, 95,join('images', 'buttons', 'button_exit.png'))
+set_button = ButtonImage(Globals.WIDTH / 2 - 75, Globals.HEIGHT / 3 * 2, 100, 100,
+                         join('images', 'buttons', 'button_settings.png'))
+exit_button = ButtonImage(Globals.WIDTH / 2 + 75, Globals.HEIGHT / 3 * 2, 95, 95,
+                          join('images', 'buttons', 'button_exit.png'))
 
-resol_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 120,join('images', 'buttons', 'button_resolution.png'))
-back_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 10 * 9, 200, 100,join('images', 'buttons', 'button_back.png'))
+resol_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 2, 300, 120,
+                           join('images', 'buttons', 'button_resolution.png'))
+back_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 10 * 9, 200, 100,
+                          join('images', 'buttons', 'button_back.png'))
 
-small_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 2, 325, 145,join('images', 'buttons', 'small_resol_button.png'))
-medium_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 3, 295, 105,join('images', 'buttons', 'medium_resol_button.png'))
-big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135,join('images', 'buttons', 'big_resol_button.png'))
+small_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 2, 325, 145,
+                               join('images', 'buttons', 'small_resol_button.png'))
+medium_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 3, 295, 105,
+                                join('images', 'buttons', 'medium_resol_button.png'))
+big_res_button = ButtonImage(Globals.WIDTH / 2, Globals.HEIGHT / 7 * 4, 280, 135,
+                             join('images', 'buttons', 'big_resol_button.png'))
 
 # Створюємо фон
 background = pygame.image.load(join('images', 'backgrounds', 'car_background.jpg'))
@@ -167,7 +174,7 @@ def car_chooser():
     arrow_right.image = pygame.transform.flip(arrow_left.image, True, False)
 
     second_play_button = ButtonImage(Globals.WIDTH * 0.5, Globals.HEIGHT * 0.7, 100, 100,
-                                      join('images', 'buttons', 'button_second_play.png'))
+                                     join('images', 'buttons', 'button_second_play.png'))
 
     angle = 0
     clock = pygame.time.Clock()
@@ -188,9 +195,9 @@ def car_chooser():
                 if second_play_button.is_clicked(event.pos):
                     GameController.game_start(screen, car)
                 if arrow_left.is_clicked(event.pos):
-                    index = (index - 1) % len(Globals.CAR_CONTAINER)
+                    index = chooser_wheel(index, -1, len(Globals.CAR_CONTAINER))
                 if arrow_right.is_clicked(event.pos):
-                    index = (index + 1) % len(Globals.CAR_CONTAINER)
+                    index = chooser_wheel(index, 1, len(Globals.CAR_CONTAINER))
                 car = Globals.CAR_CONTAINER[index]
                 text_surf = menu_font.render(car.name, True, (0, 255, 255))
                 text_rect = text_surf.get_rect(center=(Globals.WIDTH / 2, Globals.HEIGHT / 3))
@@ -209,3 +216,7 @@ def car_chooser():
 
         pygame.display.flip()
         clock.tick(60)
+
+
+def chooser_wheel(index: int, step: int, array_length: int) -> int:
+    return (index + step) % array_length
