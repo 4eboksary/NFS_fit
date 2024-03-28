@@ -29,12 +29,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         flake8 . --format=html --htmldir=reports/flake-report --exit-zero
-#    - name: Test with pytest
-#      run: |
-#        pytest --html=reports/pytest-html/report.html --self-contained-html || true
-    - name: Upload reports
+    - name: Test with pytest
       run: |
-        git config --global user.email "roshen@zebanda.com"
-        git config --global user.name "Petro"
-        git add . && git commit -m "Add reports"
-        git push
+        pytest --html=reports/pytest-html/report.html --self-contained-html || true
+    - name: Upload reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: Test and lint reports
+        path: |
+          reports
